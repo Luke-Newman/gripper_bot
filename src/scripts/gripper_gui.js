@@ -6,7 +6,7 @@ class Gripper_GUI {
     this.fs = require("fs");
   }
 
-  // colorize selected button(block) and enable button above selected 
+  // colorize selected button(block) and enable button above selected
   // button then append block position to string
   addBlock(id) {
     var num, str, initCell;
@@ -36,7 +36,7 @@ class Gripper_GUI {
     }
   }
 
-  // sets all buttons, radio btn and to their default 
+  // sets all buttons, radio btn and to their default
   // state i.e disable/enabled
   setUp() {
     var i, x;
@@ -47,7 +47,7 @@ class Gripper_GUI {
     document.getElementById("rb1").checked = true;
   }
 
-  // resets blocks, initial config string, radio btn and 
+  // resets blocks, initial config string, radio btn and
   // text to their default value
   resetBlocks() {
     var i, x;
@@ -96,7 +96,7 @@ class Gripper_GUI {
         if (err) throw err;
         console.log("Done writing.");
       });
-      // clear out.inp file
+      // clears out.inp contents
       this.fs.truncate("./Clingo/out.inp", 0, function(err) {
         if (err) throw err;
         console.log("Gripper: cleaned out.inp");
@@ -115,7 +115,7 @@ class Gripper_GUI {
       // Listen for main message
       ipcRenderer.on("clingo-finished", (event, arg) => {
         console.log("exit code from clingo to render process: " + arg);
-        
+
         // Invoke method directly on main process
         Data = {
           message: "from render process",
@@ -124,7 +124,6 @@ class Gripper_GUI {
         ipcRenderer.send("request-parser", Data);
       });
     }
-//     this.resetBlocks();
   }
 }
 

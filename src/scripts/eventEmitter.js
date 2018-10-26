@@ -18,13 +18,13 @@ emitter.on("clingo-finished", arg => {
 
 emitter.on("parser-finished", arg => {
   console.log("from emitter - parser exit with code: " + arg);
-  let argv = fs.readFileSync(
+  let parsed = fs.readFileSync(
     `${app.getAppPath()}/../Clingo/parsed.txt`,
     "utf-8"
   );
 
-  console.log("args: " + argv);
   let gripper = new Gripper();
+  let argv = parsed.split(" ");
   gripper.start(argv);
 });
 

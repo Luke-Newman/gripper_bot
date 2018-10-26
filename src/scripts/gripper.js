@@ -18,10 +18,16 @@ class Gripper {
 
   startChild(argv) {
     let command = "rosrun";
-    let args = ["px_test", "test_node", argv];
+    let args = ["px_test", "test_node"];
+    args.push(...argv);
+
+    for (var i = 0; i < args.length; i++) {
+      console.log(args[i]);
+    }
     this.child = spawn(
       command,
-      args,
+      //args,
+      ["px_test", "test_node", "11", "11", "22"],
       {
         cwd: "/opt/ros/kinetic/bin/",
         detached: true
