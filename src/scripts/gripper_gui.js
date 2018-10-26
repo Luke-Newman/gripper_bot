@@ -6,8 +6,8 @@ class Gripper_GUI {
     this.fs = require("fs");
   }
 
-  // enable button above selected button and concatnate 'block'
-  // placment to string
+  // colorize selected button(block) and enable button above selected
+  // button then append block position to string
   addBlock(id) {
     var num, str, initCell;
     if (this.counter > 0) {
@@ -36,9 +36,8 @@ class Gripper_GUI {
     }
   }
 
-  /* sets all buttons, radio btn and text
-  * to their default values
-  */
+  // sets all buttons, radio btn and to their default
+  // state i.e disable/enabled
   setUp() {
     var i, x;
     for (i = 5; i < 25; i++) {
@@ -48,6 +47,8 @@ class Gripper_GUI {
     document.getElementById("rb1").checked = true;
   }
 
+  // resets blocks, initial config string, radio btn and
+  // text to their default value
   resetBlocks() {
     var i, x;
     for (i = 1; i < 25; i++) {
@@ -71,7 +72,11 @@ class Gripper_GUI {
 
     document.getElementById("platform").innerHTML = option;
   }
-
+  /* checks if 6 buttons have been pressed then appends goal state to 
+   * inital config string which is then written to 'instances.inp'.
+   * out.inp is clear of its contents and solver and parser are started
+   * sequentially and buttons are rest.
+   */
   executeSolver() {
     var init_config, goal;
     if (this.counter > 0) {
@@ -110,18 +115,15 @@ class Gripper_GUI {
       // Listen for main message
       ipcRenderer.on("clingo-finished", (event, arg) => {
         console.log("exit code from clingo to render process: " + arg);
-        // Invoke method directly on main process
 
+        // Invoke method directly on main process
         Data = {
           message: "from render process",
           someData: "go parse"
         };
-
         ipcRenderer.send("request-parser", Data);
       });
     }
-
-    //this.resetBlocks();
   }
 }
 

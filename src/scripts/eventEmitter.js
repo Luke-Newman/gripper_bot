@@ -31,7 +31,6 @@ emitter.on("parser-finished", arg => {
 emitter.on("gripper-finished", arg => {
   console.log("from emitter - gripper exit with code: " + arg);
 
-  // clear out.inp
   fs.truncate(`${app.getAppPath()}/../Clingo/out.inp`, 0, function() {
     console.log("out.inp cleaned");
   });
