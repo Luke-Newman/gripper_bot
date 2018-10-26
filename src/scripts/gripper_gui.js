@@ -91,7 +91,7 @@ class Gripper_GUI {
         if (err) throw err;
         console.log("Done writing.");
       });
-      // clear out.inp file
+      // clears out.inp contents
       this.fs.truncate("./Clingo/out.inp", 0, function(err) {
         if (err) throw err;
         console.log("Gripper: cleaned out.inp");
@@ -111,7 +111,7 @@ class Gripper_GUI {
       ipcRenderer.on("clingo-finished", (event, arg) => {
         console.log("exit code from clingo to render process: " + arg);
         // Invoke method directly on main process
-       
+
         Data = {
           message: "from render process",
           someData: "go parse"
