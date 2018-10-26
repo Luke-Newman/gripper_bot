@@ -37,7 +37,7 @@ class Gripper_GUI {
   }
 
   /* sets all buttons, radio btn and text
-  * to their defualt values
+  * to their default values
   */
   setUp() {
     var i, x;
@@ -121,7 +121,7 @@ class Gripper_GUI {
       });
     }
 
-    this.resetBlocks();
+    //this.resetBlocks();
   }
 }
 
