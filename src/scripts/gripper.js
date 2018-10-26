@@ -26,8 +26,7 @@ class Gripper {
     }
     this.child = spawn(
       command,
-      //args,
-      ["px_test", "test_node", "11", "11", "22"],
+      args,
       {
         cwd: "/opt/ros/kinetic/bin/",
         detached: true
